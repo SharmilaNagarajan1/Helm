@@ -1,0 +1,15 @@
+replicaCount: 1
+
+image:
+  repository: <your-dockerhub-username>/simple-flask-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+env:
+  environment: dev
+
+resources: {}
