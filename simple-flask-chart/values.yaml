@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: <your-dockerhub-username>/simple-flask-app
+  repository: sharmila231/
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -13,3 +13,10 @@ env:
   environment: dev
 
 resources: {}
+
+serviceAccount:
+  create: false
+  name: ""
+
+autoscaling:
+  enabled: false
