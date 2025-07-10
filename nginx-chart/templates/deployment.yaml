@@ -2,22 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}-nginx
-  labels:
-    app: hello-world
 spec:
-  replicas: {{  .Values.replicaCount }}
   selector:
     matchLabels:
-      app: hello-world
+      app: nginx
   template:
     metadata:
       labels:
-        app: hello-world
+        app: nginx
     spec:
       containers:
-      - name: hello-world
-        image: {{ .Values.image }}
-        ports:
-        - name: http
-          containerPort: 80
-          protocol: TCP
+        - name: {{.Values.image.repository }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
